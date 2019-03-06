@@ -20,21 +20,27 @@ namespace WhentoQuit
         int wins { get; set; }
         int losses { get; set; }
         int left { get; set; }
+        int streak { get; set; }   
 
         public Form1()
         {
             InitializeComponent();
 
             left = 0;
+            streak = 0;
         }
         /// <summary>
         /// Saves the users choice of starting lives and streak
         /// Also presents the win/loss UI
         /// </summary>       
-        public void btnSave_Click(object sender, EventArgs e)
+        public void BtnSaveClick(object sender, EventArgs e)
         {            
             panel1.Visible = true;
-            left = int.Parse(txtStart.Text);    
+            left = int.Parse(txtStart.Text);
+            streak = int.Parse(txtStreak.Text);
+
+            lblLivesLeft.Text = left.ToString();
+
         }
         /// <summary>
         /// Click handler that updates the value and UI for losses and also updates
@@ -47,17 +53,23 @@ namespace WhentoQuit
 
             lblLivesLeft.Text = (--left).ToString();
                         
-        }               
+        }
         /// <summary>
-        /// Increases lives left by 1
-        /// Adds 1 loss to the win:loss record
+        /// Click handler that updates the value and UI for wins and also updates
+        /// label text for Lives Left.
         /// </summary>
         private void LblWinClick(object sender, EventArgs e)
         {
             wins++;
-            lblWins.Text = wins.ToString();
-
-            lblLivesLeft.Text = (++left).ToString();
+            lblWins.Text = wins.ToString();            
+            ///<remarks>
+            ///Only updates the value of Lives Left if Win has been clicked
+            ///the number of times established with Streak
+            ///</remarks>
+            if (wins % streak == 0)
+            {
+                lblLivesLeft.Text = (++left).ToString();
+            }            
         }
         /// <summary>
         /// Notifies the user that they are about to click the Win Button
@@ -67,7 +79,7 @@ namespace WhentoQuit
             lblWin.BackColor = System.Drawing.Color.Green;
         }
 
-        private void lblWin_MouseUp(object sender, MouseEventArgs e)
+        private void LblWinMouseUp(object sender, MouseEventArgs e)
         {
             lblWin.BackColor = System.Drawing.Color.Lime;
 
@@ -75,7 +87,7 @@ namespace WhentoQuit
         /// <summary>
         /// Notifies the user that they are about to click the Loss Button
         /// </summary>
-        private void LblLosMouseDown(object sender, MouseEventArgs e)
+        private void LblLossMouseDown(object sender, MouseEventArgs e)
         {
             lblLoss.BackColor = System.Drawing.Color.DarkRed;
         }
@@ -90,6 +102,18 @@ namespace WhentoQuit
         private void LblCloseClick(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void LblCloseMouseEnter(object sender, EventArgs e)
+        {
+            lblClose.BackColor = System.Drawing.Color.Red;
+            lblClose.ForeColor = System.Drawing.Color.White;
+        }
+
+        private void LblLeaveMouseEnter(object sender, EventArgs e)
+        {
+            lblClose.BackColor = System.Drawing.Color.DimGray;
+            lblClose.ForeColor = System.Drawing.Color.Gray;
         }
     }
 }
