@@ -15,79 +15,90 @@ using System.Windows.Forms;
 
 namespace WhentoQuit
 {    
+    /* CHEWY: Form1 is slightly generic. I would recommend declaritive class name that describes
+     * what this class is so when its used in the code, its idetified easier.*/
     public partial class Form1 : Form, IDisposable
     {
-        int wins = 0;
-        int losses = 0;
-        int left;
+        /* CHEWY: I would get in the habit of creating getters and setters for class field members 
+            I'm also not sure if they are automatic in C#. Something to look into.
+             */
+        int wins { get; set; }
+        int losses { get; set; }
+        int left { get; set; }
 
         public Form1()
         {
+            wins = 0;
+            losses = 0;
             InitializeComponent();
-
             left = 0;
         }
+
         /// <summary>
         /// Saves the users choice of starting lives and streak
         /// Also presents the win/loss UI
         /// </summary>       
-        public void btnSave_Click(object sender, EventArgs e)
+        /* CHEWY: Method names should be PascalCased also no underscores.: BtnSaveClick */
+        public void BtnSaveClick(object sender, EventArgs e)
         {            
             panel1.Visible = true;
             left = int.Parse(txtStart.Text);    
-        } 
+        }
+        
+        /* Chewy: Updated summary to have a sentance structure. */
         /// <summary>
-        /// Decreases lives left by 1
-        /// Adds 1 loss to the win:loss record
+        /// Click handler that updates the value and UI for losses and also updates
+        /// label text for Lives Left.
         /// </summary>        
-        public void lblLoss_Click(object sender, EventArgs e)
+        public void LblLossClick(object sender, EventArgs e)
         {            
             losses++;
             lblLosses.Text = losses.ToString();
-
-            lblLeft.Text = (--left).ToString();
-                        
-        }               
+            lblLivesLeft.Text = (--left).ToString();
+        }
+        
         /// <summary>
         /// Increases lives left by 1
         /// Adds 1 loss to the win:loss record
         /// </summary>
-        private void lblWin_Click(object sender, EventArgs e)
+        private void LblWinClick(object sender, EventArgs e)
         {
             wins++;
             lblWins.Text = wins.ToString();
-
-            lblLeft.Text = (++left).ToString();
+            lblLivesLeft.Text = (++left).ToString();
         }
+
         /// <summary>
         /// Notifies the user that they are about to click the Win Button
         /// </summary>
-        private void lblWin_MouseDown(object sender, MouseEventArgs e)
+        private void LblWinMouseDown(object sender, MouseEventArgs e)
         {
             lblWin.BackColor = System.Drawing.Color.Green;
         }
 
-        private void lblWin_MouseUp(object sender, MouseEventArgs e)
+        private void LblWinMouseUp(object sender, MouseEventArgs e)
         {
             lblWin.BackColor = System.Drawing.Color.Lime;
 
         }
+
         /// <summary>
         /// Notifies the user that they are about to click the Loss Button
         /// </summary>
-        private void lblLoss_MouseDown(object sender, MouseEventArgs e)
+        private void LblLossMouseDown(object sender, MouseEventArgs e)
         {
             lblLoss.BackColor = System.Drawing.Color.DarkRed;
         }
 
-        private void lblLoss_MouseUp(object sender, MouseEventArgs e)
+        private void LblLossMouseUp(object sender, MouseEventArgs e)
         {
             lblLoss.BackColor = System.Drawing.Color.Red;
         }
+
         /// <summary>
         /// Closes the application
         /// </summary
-        private void lblClose_Click(object sender, EventArgs e)
+        private void LblCloseClick(object sender, EventArgs e)
         {
             Close();
         }

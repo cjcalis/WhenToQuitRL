@@ -37,7 +37,7 @@
             this.lblWins = new System.Windows.Forms.Label();
             this.lblLoss = new System.Windows.Forms.Label();
             this.lblWin = new System.Windows.Forms.Label();
-            this.lblLeft = new System.Windows.Forms.Label();
+            this.lblLivesLeft = new System.Windows.Forms.Label();
             this.txtStart = new System.Windows.Forms.TextBox();
             this.txtStreak = new System.Windows.Forms.TextBox();
             this.lblNullStart = new System.Windows.Forms.Label();
@@ -52,7 +52,7 @@
             this.btnSave.TabIndex = 2;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.btnSave.Click += new System.EventHandler(this.BtnSaveClick);
             // 
             // label1
             // 
@@ -81,7 +81,7 @@
             this.panel1.Controls.Add(this.lblWins);
             this.panel1.Controls.Add(this.lblLoss);
             this.panel1.Controls.Add(this.lblWin);
-            this.panel1.Controls.Add(this.lblLeft);
+            this.panel1.Controls.Add(this.lblLivesLeft);
             this.panel1.Location = new System.Drawing.Point(33, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(400, 263);
@@ -131,9 +131,9 @@
             this.lblLoss.TabIndex = 2;
             this.lblLoss.Text = "Loss";
             this.lblLoss.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblLoss.Click += new System.EventHandler(this.lblLoss_Click);
-            this.lblLoss.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lblLoss_MouseDown);
-            this.lblLoss.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lblLoss_MouseUp);
+            this.lblLoss.Click += new System.EventHandler(this.LblLossClick);
+            this.lblLoss.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LblLossMouseDown);
+            this.lblLoss.MouseUp += new System.Windows.Forms.MouseEventHandler(this.LblLossMouseUp);
             // 
             // lblWin
             // 
@@ -146,19 +146,19 @@
             this.lblWin.TabIndex = 1;
             this.lblWin.Text = "Win";
             this.lblWin.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblWin.Click += new System.EventHandler(this.lblWin_Click);
-            this.lblWin.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lblWin_MouseDown);
-            this.lblWin.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lblWin_MouseUp);
+            this.lblWin.Click += new System.EventHandler(this.LblWinClick);
+            this.lblWin.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LblWinMouseDown);
+            this.lblWin.MouseUp += new System.Windows.Forms.MouseEventHandler(this.LblWinMouseUp);
             // 
-            // lblLeft
+            // lblLivesLeft
             // 
-            this.lblLeft.AutoSize = true;
-            this.lblLeft.ForeColor = System.Drawing.Color.White;
-            this.lblLeft.Location = new System.Drawing.Point(179, 62);
-            this.lblLeft.Name = "lblLeft";
-            this.lblLeft.Size = new System.Drawing.Size(0, 13);
-            this.lblLeft.TabIndex = 0;
-            this.lblLeft.Text = this.txtStart.Text;
+            this.lblLivesLeft.AutoSize = true;
+            this.lblLivesLeft.ForeColor = System.Drawing.Color.White;
+            this.lblLivesLeft.Location = new System.Drawing.Point(179, 62);
+            this.lblLivesLeft.Name = "lblLivesLeft";
+            this.lblLivesLeft.Size = new System.Drawing.Size(0, 13);
+            this.lblLivesLeft.TabIndex = 0;
+            this.lblLivesLeft.Text = this.txtStart.Text;
             // 
             // txtStart
             // 
@@ -216,7 +216,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label lblLeft;
+        private System.Windows.Forms.Label lblLivesLeft; // CHEWY: Change to lbllivesLeft: More declarative. 
         private System.Windows.Forms.Label lblLoss;
         private System.Windows.Forms.Label lblWin;
         private System.Windows.Forms.Label lblMid;
