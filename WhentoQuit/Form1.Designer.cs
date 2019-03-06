@@ -52,7 +52,6 @@
             this.btnSave.TabIndex = 2;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.BtnSaveClick);
             // 
             // label1
             // 
@@ -132,8 +131,6 @@
             this.lblLoss.Text = "Loss";
             this.lblLoss.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblLoss.Click += new System.EventHandler(this.LblLossClick);
-            this.lblLoss.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LblLossMouseDown);
-            this.lblLoss.MouseUp += new System.Windows.Forms.MouseEventHandler(this.LblLossMouseUp);
             // 
             // lblWin
             // 
@@ -148,7 +145,6 @@
             this.lblWin.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblWin.Click += new System.EventHandler(this.LblWinClick);
             this.lblWin.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LblWinMouseDown);
-            this.lblWin.MouseUp += new System.Windows.Forms.MouseEventHandler(this.LblWinMouseUp);
             // 
             // lblLivesLeft
             // 
