@@ -38,9 +38,9 @@
             this.lblLoss = new System.Windows.Forms.Label();
             this.lblWin = new System.Windows.Forms.Label();
             this.lblLeft = new System.Windows.Forms.Label();
-            this.lblClose = new System.Windows.Forms.Label();
-            this.txtStreak = new System.Windows.Forms.TextBox();
             this.txtStart = new System.Windows.Forms.TextBox();
+            this.txtStreak = new System.Windows.Forms.TextBox();
+            this.lblNullStart = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -82,7 +82,7 @@
             this.panel1.Controls.Add(this.lblLoss);
             this.panel1.Controls.Add(this.lblWin);
             this.panel1.Controls.Add(this.lblLeft);
-            this.panel1.Location = new System.Drawing.Point(38, 35);
+            this.panel1.Location = new System.Drawing.Point(33, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(400, 263);
             this.panel1.TabIndex = 5;
@@ -132,6 +132,8 @@
             this.lblLoss.Text = "Loss";
             this.lblLoss.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblLoss.Click += new System.EventHandler(this.lblLoss_Click);
+            this.lblLoss.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lblLoss_MouseDown);
+            this.lblLoss.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lblLoss_MouseUp);
             // 
             // lblWin
             // 
@@ -145,6 +147,8 @@
             this.lblWin.Text = "Win";
             this.lblWin.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblWin.Click += new System.EventHandler(this.lblWin_Click);
+            this.lblWin.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lblWin_MouseDown);
+            this.lblWin.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lblWin_MouseUp);
             // 
             // lblLeft
             // 
@@ -154,26 +158,7 @@
             this.lblLeft.Name = "lblLeft";
             this.lblLeft.Size = new System.Drawing.Size(0, 13);
             this.lblLeft.TabIndex = 0;
-            // 
-            // lblClose
-            // 
-            this.lblClose.AutoSize = true;
-            this.lblClose.BackColor = System.Drawing.Color.Red;
-            this.lblClose.Location = new System.Drawing.Point(443, 9);
-            this.lblClose.Name = "lblClose";
-            this.lblClose.Size = new System.Drawing.Size(14, 13);
-            this.lblClose.TabIndex = 6;
-            this.lblClose.Text = "X";
-            this.lblClose.Click += new System.EventHandler(this.lblClose_Click);
-            this.lblClose.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lblClose_MouseDown);
-            this.lblClose.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lblClose_MouseUp);
-            // 
-            // txtStreak
-            // 
-            this.txtStreak.Location = new System.Drawing.Point(76, 135);
-            this.txtStreak.Name = "txtStreak";
-            this.txtStreak.Size = new System.Drawing.Size(100, 20);
-            this.txtStreak.TabIndex = 1;
+            this.lblLeft.Text = this.txtStart.Text;
             // 
             // txtStart
             // 
@@ -182,19 +167,39 @@
             this.txtStart.Size = new System.Drawing.Size(100, 20);
             this.txtStart.TabIndex = 0;
             // 
+            // txtStreak
+            // 
+            this.txtStreak.Location = new System.Drawing.Point(76, 135);
+            this.txtStreak.Name = "txtStreak";
+            this.txtStreak.Size = new System.Drawing.Size(100, 20);
+            this.txtStreak.TabIndex = 1;
+            // 
+            // lblNullStart
+            // 
+            this.lblNullStart.AutoSize = true;
+            this.lblNullStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNullStart.ForeColor = System.Drawing.Color.Red;
+            this.lblNullStart.Location = new System.Drawing.Point(74, 73);
+            this.lblNullStart.Name = "lblNullStart";
+            this.lblNullStart.Size = new System.Drawing.Size(84, 9);
+            this.lblNullStart.TabIndex = 6;
+            this.lblNullStart.Tag = "";
+            this.lblNullStart.Text = "Please Enter a Number";
+            this.lblNullStart.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Black;
+            this.BackColor = System.Drawing.Color.DimGray;
             this.ClientSize = new System.Drawing.Size(469, 310);
-            this.Controls.Add(this.lblClose);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtStreak);
             this.Controls.Add(this.txtStart);
+            this.Controls.Add(this.lblNullStart);
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
@@ -217,9 +222,9 @@
         private System.Windows.Forms.Label lblMid;
         private System.Windows.Forms.Label lblLosses;
         private System.Windows.Forms.Label lblWins;
-        private System.Windows.Forms.Label lblClose;
         private System.Windows.Forms.TextBox txtStreak;
-        private System.Windows.Forms.TextBox txtStart;
+        public System.Windows.Forms.TextBox txtStart;
+        private System.Windows.Forms.Label lblNullStart;
     }
 }
 
