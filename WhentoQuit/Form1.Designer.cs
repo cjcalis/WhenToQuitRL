@@ -1,6 +1,6 @@
 ﻿namespace WhentoQuit
 {
-    partial class Form1
+    partial class whenToQuit
     {
         /// <summary>
         /// Required designer variable.
@@ -32,18 +32,20 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblRecord = new System.Windows.Forms.Label();
+            this.lblCurrStreak = new System.Windows.Forms.Label();
             this.lblDescription = new System.Windows.Forms.Label();
-            this.lblMid = new System.Windows.Forms.Label();
-            this.lblLosses = new System.Windows.Forms.Label();
-            this.lblWins = new System.Windows.Forms.Label();
             this.lblLoss = new System.Windows.Forms.Label();
             this.lblWin = new System.Windows.Forms.Label();
             this.lblLivesLeft = new System.Windows.Forms.Label();
             this.txtStart = new System.Windows.Forms.TextBox();
             this.txtStreak = new System.Windows.Forms.TextBox();
             this.lblNullStart = new System.Windows.Forms.Label();
-            this.lblClose = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.btnRestart = new System.Windows.Forms.Button();
+            this.lblQuit = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSave
@@ -78,59 +80,46 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Controls.Add(this.lblRecord);
+            this.panel1.Controls.Add(this.lblCurrStreak);
             this.panel1.Controls.Add(this.lblDescription);
-            this.panel1.Controls.Add(this.lblMid);
-            this.panel1.Controls.Add(this.lblLosses);
-            this.panel1.Controls.Add(this.lblWins);
             this.panel1.Controls.Add(this.lblLoss);
             this.panel1.Controls.Add(this.lblWin);
             this.panel1.Controls.Add(this.lblLivesLeft);
-            this.panel1.Location = new System.Drawing.Point(36, 12);
+            this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(400, 263);
+            this.panel1.Size = new System.Drawing.Size(445, 286);
             this.panel1.TabIndex = 5;
             this.panel1.Visible = false;
+            // 
+            // lblRecord
+            // 
+            this.lblRecord.AutoSize = true;
+            this.lblRecord.ForeColor = System.Drawing.Color.White;
+            this.lblRecord.Location = new System.Drawing.Point(189, 236);
+            this.lblRecord.Name = "lblRecord";
+            this.lblRecord.Size = new System.Drawing.Size(0, 13);
+            this.lblRecord.TabIndex = 8;
+            // 
+            // lblCurrStreak
+            // 
+            this.lblCurrStreak.AutoSize = true;
+            this.lblCurrStreak.Location = new System.Drawing.Point(140, 182);
+            this.lblCurrStreak.Name = "lblCurrStreak";
+            this.lblCurrStreak.Size = new System.Drawing.Size(0, 13);
+            this.lblCurrStreak.TabIndex = 7;
             // 
             // lblDescription
             // 
             this.lblDescription.AutoSize = true;
+            this.lblDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDescription.ForeColor = System.Drawing.Color.White;
-            this.lblDescription.Location = new System.Drawing.Point(175, 81);
+            this.lblDescription.Location = new System.Drawing.Point(161, 106);
             this.lblDescription.Name = "lblDescription";
-            this.lblDescription.Size = new System.Drawing.Size(53, 13);
+            this.lblDescription.Size = new System.Drawing.Size(95, 25);
             this.lblDescription.TabIndex = 6;
             this.lblDescription.Text = "Lives Left";
-            // 
-            // lblMid
-            // 
-            this.lblMid.AutoSize = true;
-            this.lblMid.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMid.ForeColor = System.Drawing.Color.White;
-            this.lblMid.Location = new System.Drawing.Point(198, 229);
-            this.lblMid.Name = "lblMid";
-            this.lblMid.Size = new System.Drawing.Size(19, 25);
-            this.lblMid.TabIndex = 5;
-            this.lblMid.Text = ":";
-            // 
-            // lblLosses
-            // 
-            this.lblLosses.AutoSize = true;
-            this.lblLosses.ForeColor = System.Drawing.Color.White;
-            this.lblLosses.Location = new System.Drawing.Point(239, 235);
-            this.lblLosses.Name = "lblLosses";
-            this.lblLosses.Size = new System.Drawing.Size(13, 13);
-            this.lblLosses.TabIndex = 4;
-            this.lblLosses.Text = "0";
-            // 
-            // lblWins
-            // 
-            this.lblWins.AutoSize = true;
-            this.lblWins.ForeColor = System.Drawing.Color.White;
-            this.lblWins.Location = new System.Drawing.Point(163, 235);
-            this.lblWins.Name = "lblWins";
-            this.lblWins.Size = new System.Drawing.Size(13, 13);
-            this.lblWins.TabIndex = 3;
-            this.lblWins.Text = "0";
             // 
             // lblLoss
             // 
@@ -138,7 +127,7 @@
             this.lblLoss.BackColor = System.Drawing.Color.Red;
             this.lblLoss.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLoss.ForeColor = System.Drawing.Color.Black;
-            this.lblLoss.Location = new System.Drawing.Point(274, 230);
+            this.lblLoss.Location = new System.Drawing.Point(273, 230);
             this.lblLoss.Name = "lblLoss";
             this.lblLoss.Size = new System.Drawing.Size(48, 22);
             this.lblLoss.TabIndex = 2;
@@ -166,10 +155,11 @@
             // lblLivesLeft
             // 
             this.lblLivesLeft.AutoSize = true;
+            this.lblLivesLeft.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLivesLeft.ForeColor = System.Drawing.Color.White;
-            this.lblLivesLeft.Location = new System.Drawing.Point(197, 60);
+            this.lblLivesLeft.Location = new System.Drawing.Point(161, 60);
             this.lblLivesLeft.Name = "lblLivesLeft";
-            this.lblLivesLeft.Size = new System.Drawing.Size(0, 13);
+            this.lblLivesLeft.Size = new System.Drawing.Size(0, 25);
             this.lblLivesLeft.TabIndex = 0;
             this.lblLivesLeft.Text = this.txtStart.Text;
             // 
@@ -200,28 +190,43 @@
             this.lblNullStart.Text = "Please Enter a Number";
             this.lblNullStart.Visible = false;
             // 
-            // lblClose
+            // panel2
             // 
-            this.lblClose.AutoSize = true;
-            this.lblClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblClose.ForeColor = System.Drawing.Color.Gray;
-            this.lblClose.Location = new System.Drawing.Point(442, 0);
-            this.lblClose.Name = "lblClose";
-            this.lblClose.Size = new System.Drawing.Size(28, 17);
-            this.lblClose.TabIndex = 7;
-            this.lblClose.Text = " X ";
-            this.lblClose.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblClose.Click += new System.EventHandler(this.LblCloseClick);
-            this.lblClose.MouseEnter += new System.EventHandler(this.LblCloseMouseEnter);
-            this.lblClose.MouseLeave += new System.EventHandler(this.LblLeaveMouseEnter);
+            this.panel2.Controls.Add(this.btnRestart);
+            this.panel2.Controls.Add(this.lblQuit);
+            this.panel2.Location = new System.Drawing.Point(3, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(445, 286);
+            this.panel2.TabIndex = 9;
+            this.panel2.Visible = false;
             // 
-            // Form1
+            // btnRestart
+            // 
+            this.btnRestart.Location = new System.Drawing.Point(181, 252);
+            this.btnRestart.Name = "btnRestart";
+            this.btnRestart.Size = new System.Drawing.Size(75, 23);
+            this.btnRestart.TabIndex = 1;
+            this.btnRestart.Text = "Restart";
+            this.btnRestart.UseVisualStyleBackColor = true;
+            this.btnRestart.Click += new System.EventHandler(this.BtnRestartClick);
+            // 
+            // lblQuit
+            // 
+            this.lblQuit.AutoSize = true;
+            this.lblQuit.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblQuit.ForeColor = System.Drawing.Color.Red;
+            this.lblQuit.Location = new System.Drawing.Point(92, 106);
+            this.lblQuit.Name = "lblQuit";
+            this.lblQuit.Size = new System.Drawing.Size(238, 25);
+            this.lblQuit.TabIndex = 0;
+            this.lblQuit.Text = "You should probably quit!!";
+            // 
+            // whenToQuit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
             this.ClientSize = new System.Drawing.Size(469, 310);
-            this.Controls.Add(this.lblClose);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -230,11 +235,13 @@
             this.Controls.Add(this.txtStart);
             this.Controls.Add(this.lblNullStart);
             this.ForeColor = System.Drawing.Color.Black;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Name = "whenToQuit";
+            this.Text = "When to Quit";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -248,14 +255,15 @@
         private System.Windows.Forms.Label lblLivesLeft; // CHEWY: Change to lbllivesLeft: More declarative. 
         private System.Windows.Forms.Label lblLoss;
         private System.Windows.Forms.Label lblWin;
-        private System.Windows.Forms.Label lblMid;
-        private System.Windows.Forms.Label lblLosses;
-        private System.Windows.Forms.Label lblWins;
         private System.Windows.Forms.TextBox txtStreak;
         public System.Windows.Forms.TextBox txtStart;
         private System.Windows.Forms.Label lblNullStart;
         private System.Windows.Forms.Label lblDescription;
-        private System.Windows.Forms.Label lblClose;
+        private System.Windows.Forms.Label lblCurrStreak;
+        private System.Windows.Forms.Label lblRecord;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button btnRestart;
+        private System.Windows.Forms.Label lblQuit;
     }
 }
 

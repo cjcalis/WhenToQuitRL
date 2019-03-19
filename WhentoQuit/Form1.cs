@@ -1,33 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 /// <summary>
 /// The idea is to allow the user to input a set of starting lives that decrease with each loss
-/// and increase base upon a winning streak that the user chooses.
+/// and increase based upon a winning streak that the user chooses.
 /// </summary>
 
 namespace WhentoQuit
-{    
-    public partial class Form1 : Form, IDisposable
+{ 
+    public partial class whenToQuit : Form, IDisposable
     {
-        int wins { get; set; }
-        int losses { get; set; }
-        int left { get; set; }
-        int streak { get; set; }   
+        int wins;
+        int losses;
+        int left;
+        int streak;
+        int currWinStreak;
+        int currLossStreak;
 
-        public Form1()
+        public whenToQuit()
         {
             InitializeComponent();
-
+            
             left = 0;
             streak = 0;
+            currWinStreak = 0;
+            currLossStreak = 0;
         }
         /// <summary>
         /// Saves the users choice of starting lives and streak
@@ -47,12 +44,24 @@ namespace WhentoQuit
         /// label text for Lives Left.
         /// </summary>        
         public void LblLossClick(object sender, EventArgs e)
-        {            
+        {   
+            ///<remarks>
+            /// Adds 1 to Loss Record.
+            /// </remarks>
             losses++;
-            lblLosses.Text = losses.ToString();
+            lblRecord.Text = wins.ToString() + " : " + losses.ToString();
 
             lblLivesLeft.Text = (--left).ToString();
-                        
+
+            currWinStreak = 0;
+            currLossStreak++;
+
+            lblCurrStreak.Text = Convert.ToString(currLossStreak) + " game LOSING streak.";
+
+            if (lblLivesLeft.Text == "-1")
+            {
+                panel2.Visible = true;
+            }
         }
         /// <summary>
         /// Click handler that updates the value and UI for wins and also updates
@@ -61,15 +70,21 @@ namespace WhentoQuit
         private void LblWinClick(object sender, EventArgs e)
         {
             wins++;
-            lblWins.Text = wins.ToString();            
+            lblRecord.Text = wins.ToString() + " : " + losses.ToString();
+
             ///<remarks>
             ///Only updates the value of Lives Left if Win has been clicked
             ///the number of times established with Streak
             ///</remarks>
-            if (wins % streak == 0)
+            currLossStreak = 0;
+            currWinStreak++;
+
+            lblCurrStreak.Text = Convert.ToString(currWinStreak) + " game WINNING streak.";
+
+            if(currWinStreak % int.Parse(txtStreak.Text) == 0)
             {
                 lblLivesLeft.Text = (++left).ToString();
-            }            
+            }
         }
         /// <summary>
         /// Notifies the user that they are about to click the Win Button
@@ -91,29 +106,21 @@ namespace WhentoQuit
         {
             lblLoss.BackColor = System.Drawing.Color.DarkRed;
         }
-
+        /// <summary>
+        /// Notifies the user that they are about to click the Win Button
+        /// </summary>
         private void LblLossMouseUp(object sender, MouseEventArgs e)
         {
             lblLoss.BackColor = System.Drawing.Color.Red;
         }
-        /// <summary>
-        /// Closes the application
-        /// </summary
-        private void LblCloseClick(object sender, EventArgs e)
-        {
-            Close();
-        }
 
-        private void LblCloseMouseEnter(object sender, EventArgs e)
+        private void BtnRestartClick(object sender, EventArgs e)
         {
-            lblClose.BackColor = System.Drawing.Color.Red;
-            lblClose.ForeColor = System.Drawing.Color.White;
-        }
-
-        private void LblLeaveMouseEnter(object sender, EventArgs e)
-        {
-            lblClose.BackColor = System.Drawing.Color.DimGray;
-            lblClose.ForeColor = System.Drawing.Color.Gray;
+            panel1.Visible = false;
+            panel2.Visible = false;
+            txtStart.Text = "";
+            txtStreak.Text = "";
+            streak = 0;            
         }
     }
 }
